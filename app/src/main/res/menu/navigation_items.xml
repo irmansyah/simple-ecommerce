@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/place_bottom"
+        android:title="Restaurant"
+        android:icon="@color/colorPrimary"/>
+
+    <item android:id="@+id/schedule_bottom"
+        android:title="Article"
+        android:icon="@color/colorPrimary" />
+
+    <item android:id="@+id/profile_bottom"
+        android:title="Profile"
+        android:icon="@color/colorPrimary" />
+
+</menu>
