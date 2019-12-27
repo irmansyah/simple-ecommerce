@@ -1,17 +1,15 @@
 package com.irmansyah.myecommerce
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.irmansyah.myecommerce.adapter.ProductAdapter
 import com.irmansyah.myecommerce.adapter.ProductTypeAdapter
-import com.irmansyah.myecommerce.adapter.SuggestionAdapter
 import com.irmansyah.myecommerce.model.ProductType
-import com.irmansyah.myecommerce.model.Suggestion
 import com.synnapps.carouselview.ImageListener
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,26 +23,7 @@ class MainActivity : AppCompatActivity() {
         R.drawable.promo4
     )
 
-    val toyList = arrayListOf(
-        Suggestion(R.drawable.toys1, "Mainan 1", 20000, "Toko 1"),
-        Suggestion(R.drawable.toys2, "Mainan 2", 30000, "Toko 2"),
-        Suggestion(R.drawable.toys3, "Mainan 3", 40000, "Toko 3"),
-        Suggestion(R.drawable.toys4, "Mainan 4", 50000, "Toko 4"),
-        Suggestion(R.drawable.toys5, "Mainan 5", 60000, "Toko 5"),
-        Suggestion(R.drawable.toys6, "Mainan 6", 70000, "Toko 6"),
-        Suggestion(R.drawable.toys1, "Mainan 1", 20000, "Toko 1"),
-        Suggestion(R.drawable.toys2, "Mainan 2", 30000, "Toko 2"),
-        Suggestion(R.drawable.toys3, "Mainan 3", 40000, "Toko 3"),
-        Suggestion(R.drawable.toys4, "Mainan 4", 50000, "Toko 4"),
-        Suggestion(R.drawable.toys5, "Mainan 5", 60000, "Toko 5"),
-        Suggestion(R.drawable.toys6, "Mainan 6", 70000, "Toko 6"),
-        Suggestion(R.drawable.toys1, "Mainan 1", 20000, "Toko 1"),
-        Suggestion(R.drawable.toys2, "Mainan 2", 30000, "Toko 2"),
-        Suggestion(R.drawable.toys3, "Mainan 3", 40000, "Toko 3"),
-        Suggestion(R.drawable.toys4, "Mainan 4", 50000, "Toko 4"),
-        Suggestion(R.drawable.toys5, "Mainan 5", 60000, "Toko 5"),
-        Suggestion(R.drawable.toys6, "Mainan 6", 70000, "Toko 6")
-    )
+    val toyList = getProductList()
 
     val productTypeList = arrayListOf(
         ProductType(R.drawable.ic_mens_fashion, "Men's Fashion"),
@@ -77,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     private var productTypeAdapter = ProductTypeAdapter(productTypeList)
-    private var suggestionAdapter = SuggestionAdapter(toyList)
+    private var suggestionAdapter = ProductAdapter(toyList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

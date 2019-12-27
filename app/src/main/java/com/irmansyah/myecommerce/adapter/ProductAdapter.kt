@@ -6,33 +6,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.irmansyah.myecommerce.R
 import com.irmansyah.myecommerce.extention.loadImage
-import com.irmansyah.myecommerce.model.Suggestion
+import com.irmansyah.myecommerce.model.Product
 import kotlinx.android.synthetic.main.item_toy.view.*
 
-class SuggestionAdapter(private val dataList: MutableList<Suggestion>) :
-    RecyclerView.Adapter<SuggestionAdapter.SuggestionViewHolder>()  {
+class ProductAdapter(private val dataList: MutableList<Product>) :
+    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>()  {
 
-    private lateinit var mListener: (Suggestion) -> Unit
+    private lateinit var mListener: (Product) -> Unit
 
-    fun setOnItemCLickListener(listener: (Suggestion) -> Unit) {
+    fun setOnItemCLickListener(listener: (Product) -> Unit) {
         this.mListener = listener
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SuggestionViewHolder = SuggestionViewHolder(
+    ): ProductViewHolder = ProductViewHolder(
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_toy, parent, false))
 
     override fun getItemCount(): Int = dataList.size
 
-    override fun onBindViewHolder(holder: SuggestionViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.clear()
         holder.onBind(position)
     }
 
-    inner class SuggestionViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ProductViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         fun clear() {
             itemView.toy_img.setImageDrawable(null)
@@ -42,10 +42,10 @@ class SuggestionAdapter(private val dataList: MutableList<Suggestion>) :
         }
 
         fun onBind(position: Int) {
-            dataList[position].imageUrl?.let { itemView.toy_img.loadImage(it) }
-            itemView.title_tv.text = dataList[position].title
+            dataList[position].image?.let { itemView.toy_img.loadImage(it) }
+            itemView.title_tv.text = dataList[position].name
             itemView.price_tv.text = dataList[position].price.toString()
-            itemView.author_tv.text = dataList[position].author
+            itemView.author_tv.text = dataList[position].seller
 
             itemView.suggestion_container.setOnClickListener { mListener(dataList[position]) }
 
